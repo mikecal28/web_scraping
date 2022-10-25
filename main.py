@@ -11,11 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 def scroll_down():
-    """A method for scrolling the page."""
-
-    # Get scroll height.
     last_height = driver.execute_script("return document.body.scrollHeight")
-
     while True:
 
         # Scroll down to the bottom.
@@ -28,7 +24,6 @@ def scroll_down():
         new_height = driver.execute_script("return document.body.scrollHeight")
 
         if new_height == last_height:
-
             break
 
         last_height = new_height
@@ -60,7 +55,6 @@ reviews = soup.find_all("a", class_="item-body")
 
 for review in reviews:
     title = review.find("span", class_="interface jsx-1867969425 item-title bold")
-    # title = review.find("span", attrs={'class': lambda e: e if "item-title-e else False})
     if title:
         title = title.text.strip()
 
